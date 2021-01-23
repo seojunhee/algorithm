@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+int GERDUP(int a, int b);
+
+int main(){
+    int T;
+    int N;
+    int M;
+    
+    
+    for(int i=0;i<10;i++){
+        cin>>T;
+    cin>>N;
+    cin>>M;
+    cout<< "#"<<T<<" " <<GERDUP(N,M)<<endl;
+    
+    }
+ return 0;   
+}
+
+int GERDUP(int a, int b) {
+   
+   while(b>1)
+   return a*GERDUP(a,b-1);
+} 

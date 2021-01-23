@@ -1,0 +1,46 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main(){
+    int T = 10;
+    int testcase;
+    int arr[100][100];
+    int sumarr[202];
+    int sum;
+    for(int i=0; i<T; i++){
+        cin>>testcase;
+        for(int i=0; i<100; i++)
+            for(int j=0; j<100; j++)
+            cin>>arr[i][j];
+                
+        for(int j=0;j<100; j++){
+            sum=0;
+          for(int k=0; k<100; k++)
+              sum +=arr[j][k];
+               sumarr[j]=sum;            
+        }
+            for(int j=0;j<100; j++){
+            sum=0;
+          for(int k=0; k<100; k++)
+              sum +=arr[k][j];
+              sumarr[j+100]=sum;        
+        }
+        sum=0;
+        for(int j=0; j<100; j++)
+            sum+= arr[j][j];
+        sumarr[200]=sum;
+        int k=0;
+        sum=0;
+        for(int j=99; j>-1; j--){
+            sum+=arr[k][j];
+            k++;
+        }
+        sumarr[201]= sum;
+    
+    sort(sumarr, sumarr+202);
+    cout<<"#" <<testcase<<" " <<sumarr[201]<<endl;
+    }
+ return 0;   
+}

@@ -1,0 +1,63 @@
+#include <iostream>
+using namespace std;
+
+int main(){
+    int T=10;// test case
+    int arr[100];//길이, 가로는 최대 100, 세로길이는 입력받음
+    int dump;//dump 회수
+    int max;//임시변수 max
+    int min;//임시변수 min
+    int index1, index2;//max와 min의 index값, 범위는 0~99까지 
+    for(int i=0; i<T; i++){
+        cin>>dump;
+        for(int j=0; j<100; j++){
+            cin>>arr[j];
+        }
+       for(int n=0;n<dump;n++)
+       {        
+        max=arr[0];//max초기화
+        min=arr[0];//min초기화   
+        index1=0; 
+        index2=0;
+        for(int k=1; k<100; k++){
+        if(max<arr[k]){
+            max =arr[k];
+        	index1=k;
+        }//max와 max의 index구하기
+        }   
+        for(int m=1; m<100; m++){
+        if(min>arr[m]){
+           min=arr[m]; 
+           index2=m;
+        }//min과 min의  index구하기
+        }
+          
+           if(arr[index1] == arr[index2]){
+              break ;             
+           }
+           else{
+           arr[index1] = arr[index1]-1;//dump계산
+           arr[index2] = arr[index2]+1;//dump계산
+           }   
+       }
+        max=arr[0];//max초기화
+        min=arr[0];//min초기화   
+        index1=0; 
+        index2=0;        
+        for(int k=0; k<100; k++){
+        if(max<arr[k]){
+            max =arr[k];
+        	index1=k;
+        }
+        }
+        for(int m=0; m<100; m++){
+        if(min>arr[m]){
+           min=arr[m]; 
+           index2=m;
+        }
+        }
+        cout<<"#"<<i+1<<" "<<arr[index1]-arr[index2]<<endl;
+            
+    }  
+return 0;    
+}

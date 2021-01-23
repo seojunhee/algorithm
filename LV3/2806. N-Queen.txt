@@ -1,0 +1,72 @@
+#include <stdio.h>
+#include <stdlib.h>
+int *col;
+int queen(int i, int n);
+bool promising(int i);
+int num = 0;
+int abs(int a, int b) {
+	if (a > b)
+		return a - b;
+	else
+		return b - a;
+}
+
+int queen(int i, int n) {
+	int j;
+
+	if (promising(i))
+	{
+		if (i == n)
+		{
+			num++;
+			return num;
+		}
+		else
+		{
+			for (j = 1; j <= n; j++)
+			{
+				col[i + 1] = j;
+				queen(i + 1,n);
+			}
+		}
+	}
+
+}
+
+bool promising(int i) {
+	int k;
+	bool switching;
+	k = 1;
+	switching = true;
+
+	while (k < i&&switching) 
+	{
+		if (col[i] == col[k] ||abs(col[i],col[k]) == i-k)
+		{
+			switching = false;
+		}
+		k++;
+	}
+	return switching;
+}
+
+int main() {
+	int i=0;
+	int j=0;
+    int T;
+    int n;
+	scanf("%d", &T);
+	
+    for(j=1;j<=T;j++){
+    num = 0;
+    scanf("%d", &n);
+	col = (int*)malloc(sizeof(int)*n + 1);
+	for (i = 1; i <= n; i++)
+	{
+		col[i] = n;
+	}
+	queen(0, n);
+	printf("#%d %d\n",j,num);
+    }
+	return 0;
+}

@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main(){
+    int t;//test case
+    int N;//농작물의 값
+    int i,j,k,m;
+    int value=0;;//value의 합
+    int arr[49][49];  //농장의 크기(최대 49*49
+    scanf("%d",&t); 
+    
+  for(k=1;k<=t; k++){  
+      value =0;
+       scanf("%d",&N);
+        for(i=0; i<N; i++)
+            for(j=0;j<N;j++)
+            {
+                scanf("%1d", &arr[i][j]);
+            }
+        // 농장의 크기를 받고, 농장 초기화
+    
+     int  temp=N/2;
+       for(i=0; i<N/2; i++)
+       {     
+           for(j=temp; j<=N-temp-1;j++)
+           {
+            value=value+ arr[i][j];
+           }
+           --temp;        
+       }
+      
+      for(m=0;m<N;m++)
+      {
+       value= value +arr[N/2][m];
+      }
+      
+  temp = N-2;
+       for(i=N/2+1; i<N;i++)
+       {     
+           for(j=temp; j>=N-(temp+1);j--)
+           {
+            value=value+ arr[i][j];
+           }
+           --temp;        
+       }
+
+      printf("#%d %d\n",k,value);
+    
+   }
+      
+    
+ return 0;   
+}

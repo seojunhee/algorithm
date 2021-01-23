@@ -1,0 +1,61 @@
+#include<iostream>
+#include <stdio.h>
+using namespace std;
+
+int main(int argc, char** argv)
+{
+	int test_case;
+	int T;
+	
+    T = 10;
+	
+	for(test_case = 1; test_case <= T; ++test_case)
+	{
+       int N;
+       int state =1;
+       int temp  = -1;
+       int arr[100];
+       
+        
+       scanf("%d",&N);
+       for(int i=0; i<N; i++)
+       {
+           scanf("%1d", &arr[i]);      
+       }
+	   while(state)
+       {
+         for(int j=0; j<N; j++)
+         {
+             if(temp == arr[j])
+             {
+                 for(int k=j; k<N-1; k++)
+                 {
+                  arr[k-1] = arr[k+1];    
+                 }
+                 temp = -1;
+                 N = N-2;
+                 break;
+             }             
+             else
+             {
+                 temp = arr[j];  
+             }
+         
+             if (j==N-1)
+             {
+                 state = 0;
+                 break;
+             }
+         }                  
+       }
+         
+      printf("#%d ",test_case);
+       for(int j=0; j<N ; j++)
+       {          
+        printf("%d",arr[j]);    
+       }
+     
+        printf("\n");
+	}
+	return 0;//정상종료시 반드시 0을 리턴해야합니다.
+}

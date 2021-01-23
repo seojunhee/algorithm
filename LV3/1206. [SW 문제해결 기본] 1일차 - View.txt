@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+int returnsecond(int a, int b, int c, int d, int e);
+
+int main(){
+	int T=10 ;
+	int right ;
+    int jomang;
+    int top;
+    int second;
+    for(int i=0; i<T; i++){
+        jomang = 0;
+        cin>>right;
+        int tower[right];
+        for(int j=0; j<right; j++){
+         cin>>tower[j];   
+        }        
+        for(int k=2; k<right-2; k++){
+        top=0;
+        second=0;
+         if(tower[k]>tower[k-1]&&tower[k]>tower[k-2]&&tower[k]>tower[k+1]&&tower[k]>tower[k+2]){
+             top = tower[k];
+            
+             if(tower[k-1]>=tower[k-2]&&tower[k-1]>=tower[k+1]&&tower[k-1]>=tower[k+2])
+                 second = tower[k-1];
+             else if (tower[k-2]>=tower[k-1]&&tower[k-2]>=tower[k+1]&&tower[k-2]>=tower[k+2])
+                     second = tower[k-2];
+             else if (tower[k+1]>=tower[k-1]&&tower[k+1]>=tower[k+-2]&&tower[k+1]>=tower[k+2])
+                 second = tower[k+1];
+             else second = tower[k+2];
+             
+         if(top>second)
+             jomang += top-second;
+         
+         }
+        }
+        
+      cout<<"#"<<i+1<<" "<<jomang<<endl;      
+    }
+
+
+return 0;
+}
