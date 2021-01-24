@@ -1,0 +1,42 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int solution(vector<int> priorities, int location) {
+    int answer = 0;
+    int temp;
+    int state = 0;
+    while(!priorities.empty())
+    {
+       state =0;
+       int num =  priorities[location];
+       vector<int> :: iterator it;
+       it = priorities.begin();
+       temp = priorities.front();
+       it = priorities.erase(it);
+       location--;
+       for(int i=0; i<priorities.size(); i++)
+       {
+           if(temp<priorities[i])
+           {
+               priorities.push_back(temp);
+               if(location == -1)
+               {
+                   location = priorities.size()-1;
+               }
+               state = 1;
+               break;
+           }
+       }
+      if(state == 0)
+      {
+          answer++;
+      }
+      if(state == 0 && temp == num && location ==-1)
+      {
+          break;
+      }
+    }    
+    return answer;
+}

@@ -1,0 +1,25 @@
+#include <string>
+#include <vector>
+#include <unordered_set> 
+
+using namespace std;
+
+string solution(vector<string> participant, vector<string> completion) {
+    string answer = "";    
+    unordered_multiset<string> set1 ;
+    
+    for(int i=0; i<participant.size(); i++)
+    {
+        set1.insert(participant[i]);
+    }
+    unordered_multiset<string> ::iterator it;
+    
+    for(int j=0; j<completion.size(); j++)
+    {        
+        it = set1.find(completion[j]);
+        set1.erase(it);
+    }
+    
+    answer = *set1.begin();
+    return answer;
+}

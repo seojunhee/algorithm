@@ -1,0 +1,46 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+vector<int> solution(vector<int> progresses, vector<int> speeds) {
+    vector<int> answer;
+    int day = 0;
+    int count=0;
+    int k=0;
+    int a;
+    vector<int> state;
+    for(int i=0; i<progresses.size(); i++)
+    {
+        state.push_back(0);
+    }
+    
+    for(day =1; day<100; day++)
+    {
+        count =0;
+        for(int j=0; j<speeds.size(); j++)
+        {
+            a = progresses[j]+speeds[j]*day;
+            if(a>=100)
+            {
+                state[j] = 1;
+            }                
+        }
+
+        
+        while(state[k] ==1)
+        {            
+            count++;
+            k++;
+        }
+        
+        if(count!=0)
+        {
+        answer.push_back(count);
+        }
+    }
+    
+    
+    
+    return answer;
+}
