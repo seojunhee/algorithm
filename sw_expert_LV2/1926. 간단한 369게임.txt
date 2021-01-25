@@ -1,0 +1,27 @@
+#include<iostream>
+ 
+using namespace std;
+ 
+int main(int argc, char** argv)
+{   int N;
+    cin>>N;
+    int condition;
+    int num;
+    for(int i=1;i<=N;i++){
+        condition=0;
+        for(num=i;num!=0; num=num/10){
+            if(num%10==3 || num%10==6 || num%10==9){
+                condition=1;
+                cout<<'-';
+            }
+        }
+        if(condition) {
+            cout<<' ';
+        }
+        else {
+            cout<<i<<' ';
+        }
+    }
+     
+    return 0;
+}

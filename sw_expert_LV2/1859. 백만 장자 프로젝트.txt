@@ -1,0 +1,33 @@
+#include <iostream>
+#define MAXN 1000000
+using namespace std;
+int N;
+int input[MAXN+2];
+long long sum;
+
+int main(){
+ios::sync_with_stdio(false);
+int T;
+int max;
+
+cin>>T;
+for(int i=0; i<T; i++){
+    sum=0;
+    max=0;
+ 	cin>>N;   
+    for(int j=1; j<=N; j++){
+        cin>>input[j];
+    }
+    max=input[N];
+    for(int j=N; j>=1; j--){
+        if(max<input[j])
+           max=input[j];
+        else
+            sum+= max-input[j];
+    }
+    cout<<"#"<<i+1<<" "<<sum<<endl;
+}
+    
+    
+return 0;
+}
