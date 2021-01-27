@@ -1,0 +1,146 @@
+STL  VECTOR
+
+#include <vector>
+
+vector<int> v; 라고 할 때
+
+v.push_back(인자);  맨뒤에 값 넣음
+v.pop_back(); : 맨 뒤의 원소 삭제
+
+그러나 pop이나 push_front는 없음 
+
+front() : 맨 앞의 값 가져옴
+back(): 맨 뒤의 원소 참조
+
+vector<int> v(5, 2);
+- 2로 초기화된 5개의 원소를 가지는 vector v를 생성합니다.
+
+vector<int> v(5);
+기본값(0)으로 초기화된 5개의 원소를 가지는  vector v를 생성함
+
+vector<int> v(10000) 해야 벡터값에 값 저장가능
+아니면 push_back을 해줘야됨 
+
+v.assign(5, 2);
+- 2의 값으로 5개의 원소 할당.
+
+v.at( x );  : x번째 원소를 참조함, 속도는 느림
+v[x]       : x번째 원소를 참조함, 속도는 빠름
+
+
+이터레이터 사용법
+vector<int> ::iterator it;
+it = v.begin();  //이터레이터로 첫번째 원소 가리킴
+it =v.erase(it);   //이터레이터로 현재 가르키고 있는 원소 삭제
+
+삭제 후 알아서 앞으로 한자리씩 자동으로 이동 
+
+v.begin();   : 이터레이터 사용
+v.end();     : 이터레이터 사용
+it = v.insert(it, 인자)  //하면 나머지는 뒤로 밀림
+it++ 하면 벡터의 다음 원소를 가리킴 == it = it+1 와  같음 (주소이기 떄문)
+
+v.empty();  : 비어있다면 1 아니면 0 가져옴
+
+
+
+// VECTOR
+
+--------------------------------------------------------------------------------------
+C++ AUTO 타입 추론 
+
+auto는 초기화 값에 따라 알아서 데이터 타입을 정해주는 키워드
+
+예를 들어
+
+auto t1 = 5 하면  //t1 은 int 타입
+
+auto t2 = "aaa"  하면 // t2는 string 타입
+
+  & 나 const 한정자와 함께 사용하면서 효율 증가 가능
+
+const auto a1 = 10  // a1은 const int가 됨
+
+auto& 혹은 auto*
+
+예를 들어  vector<int> v = {1,2,3,4,5} 라는 vector가 있을 떄
+
+이 벡터의 모든 값을 x2를 해야 할 떄
+
+이터레이터를 사용해서  *2 를 사용할 수 있지만
+
+
+
+auto와 range based for문 을 사용하면
+for(auto& elem : v)
+{
+elem *= 2;
+}
+로 나타낼 수 있다.
+
+
+ranged based for문에서는 
+
+for(auto elem : v) 이렇게 한다면
+elem 변수에 각각 v(배열)의 요소들이 맨 앞부터 하나씩 들어감
+
+
+// AUTO 타입 추론 
+-------------------------------------------------------------------
+STL SET
+
+#include <set>
+#include <unordered_set>
+저 두개중 하나 사용
+
+
+set 사용법
+
+set<int> set1
+
+이후 set에 적재
+
+set1.insert( 인자  ) 하면 set에 적재됨
+
+set1.erase( it(이터레이터) ) 하면 삭제됨
+
+//STL SET
+
+-------------------------------------------------------
+STL MAP
+#include <map>
+
+map<string, int> m;
+
+m.count(인자)  :동등한 키가 있는지 검색하고 일치하는 키를 반환
+m.end() :마지막 요소를 참조하는 이터레이터 반환
+m.equal_range(인자) : 
+m.find() : 컨테이너에서 동등한 키가 있는지 검색하고 있으면 이터레이터 반환하고
+없으면 마지막 요소를 이터레이터 반환
+
+m.insert("a", 1) : 새로운 요소를 삽입,컨테이너 크기 조정
+
+//STL MAP
+
+--------------------------------------------------------
+STRING
+#include <string>
+
+cin.getline()함수
+buf, size , delimitchar 
+buf는 키보드로부터 읽은 문자열을 저장할 배열
+size 는 배열의 크기
+delimitchar 문자열 입력 끝을 지정하는 구분 문자.(디폴트 값은 \n)
+
+
+함수 목록:
+그냥 getline() 함수 : 첫 번쨰 인자에는  cin을, 두 번째는 string객체를, 3번째에는 구분문자
+
+stoi함수
+스트링을 int형식으로
+string a = "2021"라 치면
+int n = stoi(a); 하면 
+n은 정수값 2021을 가진다.
+
+
+--------------------------------------------------------
